@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const docs = [
+   // { uri: "https://url-to-my-pdf.pdf" }, // Remote file
+   { uri: 'https://www.africau.edu/images/default/sample.pdf', fileType:'pdf'}, // Local File
+   { uri: 'a.pdf', fileType:'pdf'}, // Local File
+   { uri: 'a.pptx', fileType:'pptx'}, // Local File
+   { uri: 'a.docx', fileType:'docx'}, // Local File
+   { uri: 'a.xls', fileType:'xls'}, // Local File
+  ];
+
+  return <DocViewer
+  config={{ header: {
+     disableHeader: false,
+      disableFileName: false,
+    retainURLParams:false
+    },  }}
+  documents={docs} pluginRenderers={DocViewerRenderers} />;
 }
 
 export default App;
